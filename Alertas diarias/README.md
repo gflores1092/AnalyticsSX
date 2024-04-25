@@ -1,8 +1,8 @@
-Ejecutar 7 am lo siguiente: Refuerzo de ordenes pendientes
+**Aplicación de alertas diarias**
 
-1. Ejecutar query: https://console.cloud.google.com/bigquery?sq=470828348721:3085c917507445e3837da2c1765cb6fc
-2. Ejecutar script Python ""
+Esta aplicación se divide en 3 partes, las cuales se dividen en las siguientes:
 
-Para la tarde
+- 1_App: 
+- 2_Messages: 
+- 3_Scripts: 
 
-1. Ejecutar script Python "Refuerzo ordenes pendientes"
