@@ -23,7 +23,7 @@ sellerpu <- sellerpick %>%
 sellersdist <- st_join(sellerpu, city) %>%
               select(-Description) %>%
               st_drop_geometry() %>%
-              rename("district"="Name")
+              rename("distrito"="Name")
 # Zonas poligonos
 sellerszona <- st_join(sellerpu, zona) %>% 
               select(-Description) %>%
@@ -32,7 +32,7 @@ sellerszona <- st_join(sellerpu, zona) %>%
 #-----------------------------------------------------------------------------
 # Cruces
 sellerdatafinal <- sellerdata %>% 
-                   left_join(storesdist %>% select(seller_id,district), 
+                   left_join(sellersdist %>% select(seller_id,distrito), 
                              by=c("seller_id"="seller_id")
                              ) %>%
                    left_join(sellerszona %>% select(seller_id,zona), 
@@ -40,4 +40,14 @@ sellerdatafinal <- sellerdata %>%
                              )
 #-----------------------------------------------------------------------------
 # Exportar
-write_csv(sellerdatafinal,'sellerdatafinal.csv')
+write_csv(
+          (
+            sellerdatafinal %>%
+            select(seller_id,seller_name,
+                   warehouse_name,
+                   country,region,city,district,address,
+                   latitude,longitude,
+                   distrito,zona
+                   )
+          )
+          ,'sellerdatafinal.csv')
